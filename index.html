@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vishwakarma Puja Invitation</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+        color: #fff;
+        background:
+            radial-gradient(circle at 50% 20%, #7a2800 0%, #3a1000 35%, #120500 75%, #050200 100%);
+    }
+
+    /* Background glow */
+    .glow {
+        position: fixed;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: rgba(255, 166, 0, 0.14);
+        filter: blur(80px);
+        animation: glowMove 7s infinite alternate ease-in-out;
+        z-index: 0;
+    }
+
+    .glow.one {
+        top: -150px;
+        left: -150px;
+    }
+
+    .glow.two {
+        bottom: -180px;
+        right: -150px;
+        animation-delay: 2s;
+    }
+
+    @keyframes glowMove {
+        from {
+            transform: scale(0.8) translate(0, 0);
+        }
+        to {
+            transform: scale(1.3) translate(80px, 40px);
+        }
+    }
+
+    /* Main container */
+    .container {
+        position: relative;
+        z-index: 2;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 15px;
+    }
+
+    /* Invitation card */
+    .card {
+        width: min(920px, 96%);
+        position: relative;
+        padding: 55px 35px;
+        text-align: center;
+        border-radius: 35px;
+        border: 2px solid rgba(255, 196, 71, 0.8);
+        background: linear-gradient(
+            145deg,
+            rgba(92, 24, 0, 0.92),
+            rgba(32, 7, 0, 0.95)
+        );
+        box-shadow:
+            0 0 30px rgba(255, 174, 0, 0.25),
+            0 0 100px rgba(255, 88, 0, 0.15),
+            inset 0 0 40px rgba(255, 179, 0, 0.06);
+        overflow: hidden;
+        animation: cardAppear 1.4s ease forwards;
+    }
+
+    @keyframes cardAppear {
+        from {
+            opacity: 0;
+            transform: scale(.8) translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    /* Decorative border */
+    .card::before {
+        content: "";
+        position: absolute;
+        inset: 12px;
+        border: 1px solid rgba(255, 192, 70, .55);
+        border-radius: 25px;
+        pointer-events: none;
+    }
+
+    .card::after {
+        content: "✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦";
+        position: absolute;
+        top: 5px;
+        left: 0;
+        right: 0;
+        color: #ffd166;
+        font-size: 18px;
+        letter-spacing: 15px;
+        opacity: .7;
+    }
+
+    /* Top symbol */
+    .symbol {
+        font-size: 75px;
+        margin-bottom: 8px;
+        display: inline-block;
+        filter: drop-shadow(0 0 15px #ffb300);
+        animation: symbolFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes symbolFloat {
+        0%, 100% {
+            transform: translateY(0) rotate(-2deg);
+        }
+        50% {
+            transform: translateY(-12px) rotate(2deg);
+        }
+    }
+
+    .welcome {
+        color: #ffd166;
+        text-transform: uppercase;
+        font-size: 15px;
+        letter-spacing: 5px;
+        font-weight: 700;
+        animation: fadeIn 1s 0.4s both;
+    }
+
+    .title {
+        margin-top: 10px;
+        font-family: Georgia, serif;
+        font-size: clamp(38px, 7vw, 76px);
+        line-height: 1;
+        background: linear-gradient(
+            90deg,
+            #ffca3a,
+            #fff2a8,
+            #ff8c00,
+            #ffe27a,
+            #ffca3a
+        );
+        background-size: 300%;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation:
+            titleGlow 4s linear infinite,
+            fadeIn 1s .7s both;
+    }
+
+    @keyframes titleGlow {
+        0% { background-position: 0%; }
+        100% { background-position: 300%; }
+    }
+
+    .subtitle {
+        margin-top: 18px;
+        color: #ffe9c2;
+        font-size: clamp(16px, 2.5vw, 22px);
+        letter-spacing: 2px;
+        animation: fadeIn 1s 1s both;
+    }
+
+    /* Om / separator */
+    .divider {
+        margin: 25px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        color: #ffca3a;
+    }
+
+    .divider span {
+        width: 100px;
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            transparent,
+            #ffca3a
+        );
+    }
+
+    .divider span:last-child {
+        background: linear-gradient(
+            to left,
+            transparent,
+            #ffca3a
+        );
+    }
+
+    /* Invitation text */
+    .message {
+        max-width: 700px;
+        margin: auto;
+        color: #fff4df;
+        font-size: 18px;
+        line-height: 1.8;
+        animation: fadeIn 1s 1.2s both;
+    }
+
+    .highlight {
+        color: #ffd166;
+        font-weight: bold;
+    }
+
+    /* Details */
+    .details {
+        margin: 32px auto;
+        max-width: 720px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .detail-box {
+        padding: 20px 12px;
+        border-radius: 18px;
+        background: rgba(255, 164, 0, 0.08);
+        border: 1px solid rgba(255, 193, 7, .35);
+        transition: .3s;
+        animation: boxUp 1s both;
+    }
+
+    .detail-box:nth-child(2) {
+        animation-delay: .15s;
+    }
+
+    .detail-box:nth-child(3) {
+        animation-delay: .3s;
+    }
+
+    .detail-box:hover {
+        transform: translateY(-8px);
+        background: rgba(255, 164, 0, .16);
+        box-shadow: 0 10px 30px rgba(255, 170, 0, .15);
+    }
+
+    @keyframes boxUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .detail-icon {
+        font-size: 30px;
+        margin-bottom: 8px;
+    }
+
+    .detail-title {
+        color: #ffca3a;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .detail-value {
+        margin-top: 6px;
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    /* Countdown */
+    .countdown-title {
+        color: #ffd166;
+        font-size: 14px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+
+    .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin: 18px auto 30px;
+        flex-wrap: wrap;
+    }
+
+    .time {
+        width: 82px;
+        padding: 12px 8px;
+        border-radius: 15px;
+        background: rgba(0,0,0,.3);
+        border: 1px solid rgba(255,202,58,.3);
+    }
+
+    .time strong {
+        display: block;
+        font-size: 28px;
+        color: #ffd166;
+    }
+
+    .time small {
+        color: #ffe8bb;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Button */
+    .btn {
+        border: none;
+        cursor: pointer;
+        padding: 16px 35px;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: 800;
+        color: #351000;
+        background: linear-gradient(135deg, #ffd166, #ff8c00);
+        box-shadow:
+            0 0 15px rgba(255, 177, 0, .4),
+            0 8px 25px rgba(255, 105, 0, .2);
+        transition: .3s;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn:hover {
+        transform: translateY(-4px) scale(1.03);
+        box-shadow:
+            0 0 35px rgba(255, 193, 7, .7),
+            0 12px 35px rgba(255, 105, 0, .3);
+    }
+
+    .btn::after {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 100%;
+        top: 0;
+        left: -100px;
+        transform: skewX(-25deg);
+        background: rgba(255,255,255,.35);
+        animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+        0% { left: -100px; }
+        40%,100% { left: 130%; }
+    }
+
+    .footer {
+        margin-top: 28px;
+        color: #dcbf9a;
+        font-size: 14px;
+    }
+
+    .footer strong {
+        color: #ffd166;
+    }
+
+    /* Floating diyas */
+    .diya {
+        position: fixed;
+        font-size: 34px;
+        z-index: 1;
+        animation: diyaFloat 5s ease-in-out infinite;
+        filter: drop-shadow(0 0 12px #ff9d00);
+        pointer-events: none;
+    }
+
+    .d1 { left: 5%; bottom: 12%; animation-delay: 0s; }
+    .d2 { right: 6%; top: 20%; animation-delay: 1.5s; }
+    .d3 { left: 10%; top: 15%; animation-delay: 3s; }
+    .d4 { right: 10%; bottom: 12%; animation-delay: 2s; }
+
+    @keyframes diyaFloat {
+        0%,100% {
+            transform: translateY(0) rotate(-5deg);
+            opacity: .7;
+        }
+        50% {
+            transform: translateY(-25px) rotate(5deg);
+            opacity: 1;
+        }
+    }
+
+    /* Flower petals */
+    .petal {
+        position: fixed;
+        top: -30px;
+        z-index: 3;
+        pointer-events: none;
+        animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+        to {
+            transform:
+                translateY(110vh)
+                rotate(720deg);
+            opacity: .2;
+        }
+    }
+
+    /* Spark particles */
+    .spark {
+        position: fixed;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #ffd166;
+        box-shadow: 0 0 12px #ff9800;
+        pointer-events: none;
+        z-index: 1;
+        animation: sparkMove 4s infinite ease-in-out;
+    }
+
+    @keyframes sparkMove {
+        0% {
+            opacity: 0;
+            transform: translateY(0) scale(.5);
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-100px) scale(1.5);
+        }
+    }
+
+    /* Modal */
+    .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.75);
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+        opacity: 0;
+        visibility: hidden;
+        transition: .4s;
+        padding: 20px;
+    }
+
+    .modal.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .modal-box {
+        max-width: 500px;
+        width: 100%;
+        padding: 40px 25px;
+        text-align: center;
+        border-radius: 25px;
+        background: linear-gradient(145deg, #6b2000, #1e0700);
+        border: 2px solid #ffca3a;
+        box-shadow: 0 0 50px rgba(255,170,0,.3);
+        transform: scale(.7);
+        transition: .4s;
+    }
+
+    .modal.active .modal-box {
+        transform: scale(1);
+    }
+
+    .modal-box h2 {
+        color: #ffd166;
+        font-family: Georgia, serif;
+        font-size: 35px;
+        margin-bottom: 15px;
+    }
+
+    .modal-box p {
+        color: #ffe9c2;
+        line-height: 1.7;
+        margin-bottom: 25px;
+    }
+
+    .close-btn {
+        padding: 11px 25px;
+        border: 1px solid #ffd166;
+        border-radius: 30px;
+        background: transparent;
+        color: #ffd166;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    .close-btn:hover {
+        background: #ffd166;
+        color: #351000;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive */
+    @media(max-width: 700px) {
+        .card {
+            padding: 45px 18px;
+        }
+
+        .details {
+            grid-template-columns: 1fr;
+        }
+
+        .message {
+            font-size: 16px;
+        }
+
+        .symbol {
+            font-size: 60px;
+        }
+
+        .time {
+            width: 70px;
+        }
+
+        .time strong {
+            font-size: 23px;
+        }
+
+        .diya {
+            font-size: 25px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+<!-- Floating Diyas -->
+<div class="diya d1">🪔</div>
+<div class="diya d2">🪔</div>
+<div class="diya d3">🪔</div>
+<div class="diya d4">🪔</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="symbol">🕉️</div>
+
+        <div class="welcome">॥ शुभ अवसर ॥</div>
+
+        <h1 class="title">Vishwakarma Puja</h1>
+
+        <p class="subtitle">
+           🙏 A heartful invitation from 🙏
+        </p>
+        <p class="subtitle">
+            🌸 Department of Computer Science & Engineering 🌸
+        </p>
+        <p class="subtitle">
+            
+        </p>
+
+        <div class="divider">
+            <span></span>
+            ✦
+            <span></span>
+        </div>
+
+        <p class="message">
+            With great devotion and happiness, we invite you and your family
+            to join us in celebrating the auspicious occasion of
+            <span class="highlight">Lord Vishwakarma Puja</span>.
+            <br>
+            Let us seek the blessings of the divine architect for
+            <span class="highlight">success, prosperity, creativity and progress</span>.
+        </p>
+
+        <!-- Event Details -->
+        <div class="details">
+
+            <div class="detail-box">
+                <div class="detail-icon">📅</div>
+                <div class="detail-title">Date</div>
+                <div class="detail-value" id="eventDate">
+                    17 September 2026
+                </div>
+            </div>
+
+            <div class="detail-box">
+                <div class="detail-icon">⏰</div>
+                <div class="detail-title">Time</div>
+                <div class="detail-value">
+                    10:00 AM Onwards
+                </div>
+            </div>
+
+            <div class="detail-box">
+                <div class="detail-icon">📍</div>
+                <div class="detail-title">Venue</div>
+                <div class="detail-value">
+                    Room No:- 210
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Countdown -->
+        <div class="countdown-title">
+            Celebration Countdown
+        </div>
+
+        <div class="countdown">
+
+            <div class="time">
+                <strong id="days">00</strong>
+                <small>Days</small>
+            </div>
+
+            <div class="time">
+                <strong id="hours">00</strong>
+                <small>Hours</small>
+            </div>
+
+            <div class="time">
+                <strong id="minutes">00</strong>
+                <small>Minutes</small>
+            </div>
+
+            <div class="time">
+                <strong id="seconds">00</strong>
+                <small>Seconds</small>
+            </div>
+
+        </div>
+
+        <button class="btn" onclick="openInvitation()">
+            ✨ Join the Celebration ✨
+        </button>
+
+        <div class="footer">
+            With warm regards,<br>
+            <strong>DITAM, CSE</strong>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <div style="font-size:60px;">🙏</div>
+
+        <h2>You're Invited!</h2>
+
+        <p>
+            We look forward to celebrating Vishwakarma Puja
+            with you and your loved ones.
+            <br><br>
+            May Lord Vishwakarma bless us with
+            <strong>happiness, prosperity and success.</strong>
+        </p>
+
+        <button class="close-btn" onclick="closeInvitation()">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+    /* ==========================================
+       COUNTDOWN
+       Change this date/time for your event
+       ========================================== */
+
+    const eventTime = new Date("September 17, 2026 09:00:00").getTime();
+
+    function updateCountdown() {
+
+        const now = new Date().getTime();
+        const distance = eventTime - now;
+
+        if (distance <= 0) {
+
+            document.getElementById("days").innerText = "00";
+            document.getElementById("hours").innerText = "00";
+            document.getElementById("minutes").innerText = "00";
+            document.getElementById("seconds").innerText = "00";
+
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24))
+            / (1000 * 60 * 60)
+        );
+
+        const minutes = Math.floor(
+            (distance % (1000 * 60 * 60))
+            / (1000 * 60)
+        );
+
+        const seconds = Math.floor(
+            (distance % (1000 * 60))
+            / 1000
+        );
+
+        document.getElementById("days").innerText =
+            String(days).padStart(2, "0");
+
+        document.getElementById("hours").innerText =
+            String(hours).padStart(2, "0");
+
+        document.getElementById("minutes").innerText =
+            String(minutes).padStart(2, "0");
+
+        document.getElementById("seconds").innerText =
+            String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+
+    /* ==========================================
+       INVITATION MODAL
+       ========================================== */
+
+    function openInvitation() {
+        document.getElementById("modal").classList.add("active");
+    }
+
+    function closeInvitation() {
+        document.getElementById("modal").classList.remove("active");
+    }
+
+    document.getElementById("modal").addEventListener("click", function(e) {
+        if (e.target === this) {
+            closeInvitation();
+        }
+    });
+
+
+    /* ==========================================
+       FALLING FLOWER PETALS
+       ========================================== */
+
+    const flowers = ["🌼", "🌸", "🌺", "🟠"];
+
+    function createPetal() {
+
+        const petal = document.createElement("div");
+
+        petal.className = "petal";
+
+        petal.innerText =
+            flowers[Math.floor(Math.random() * flowers.length)];
+
+        petal.style.left =
+            Math.random() * 100 + "vw";
+
+        petal.style.fontSize =
+            (12 + Math.random() * 15) + "px";
+
+        petal.style.animationDuration =
+            (5 + Math.random() * 6) + "s";
+
+        petal.style.opacity =
+            0.5 + Math.random() * 0.5;
+
+        document.body.appendChild(petal);
+
+        setTimeout(() => {
+            petal.remove();
+        }, 12000);
+    }
+
+    setInterval(createPetal, 500);
+
+
+    /* ==========================================
+       FLOATING SPARKS
+       ========================================== */
+
+    function createSpark() {
+
+        const spark = document.createElement("div");
+
+        spark.className = "spark";
+
+        spark.style.left =
+            Math.random() * 100 + "vw";
+
+        spark.style.top =
+            50 + Math.random() * 50 + "vh";
+
+        spark.style.animationDuration =
+            (2 + Math.random() * 4) + "s";
+
+        document.body.appendChild(spark);
+
+        setTimeout(() => {
+            spark.remove();
+        }, 6000);
+    }
+
+    setInterval(createSpark, 250);
+
+
+    /* ==========================================
+       CLICK EFFECT
+       ========================================== */
+
+    document.addEventListener("click", function(e) {
+
+        for (let i = 0; i < 8; i++) {
+
+            const particle = document.createElement("div");
+
+            particle.style.position = "fixed";
+            particle.style.left = e.clientX + "px";
+            particle.style.top = e.clientY + "px";
+            particle.style.width = "5px";
+            particle.style.height = "5px";
+            particle.style.borderRadius = "50%";
+            particle.style.background = "#ffd166";
+            particle.style.boxShadow = "0 0 10px #ff9800";
+            particle.style.pointerEvents = "none";
+            particle.style.zIndex = "100";
+
+            const angle =
+                Math.random() * Math.PI * 2;
+
+            const distance =
+                30 + Math.random() * 60;
+
+            const x =
+                Math.cos(angle) * distance;
+
+            const y =
+                Math.sin(angle) * distance;
+
+            particle.animate(
+                [
+                    {
+                        transform: "translate(0,0)",
+                        opacity: 1
+                    },
+                    {
+                        transform:
+                            `translate(${x}px,${y}px)`,
+                        opacity: 0
+                    }
+                ],
+                {
+                    duration: 700,
+                    easing: "ease-out"
+                }
+            );
+
+            document.body.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 800);
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
